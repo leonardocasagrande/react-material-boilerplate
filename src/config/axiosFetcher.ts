@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import {
   requestInterceptor,
   requestInterceptorError,
@@ -11,4 +11,7 @@ const Axios = axios.create();
 Axios.interceptors.request.use(requestInterceptor, requestInterceptorError);
 Axios.interceptors.response.use(responseInterceptor, responseInterceptorError);
 
-export { Axios };
+const axiosFetcher = (url: string, config?: AxiosRequestConfig) =>
+  Axios.get(url, config).then((res) => res.data);
+
+export { Axios, axiosFetcher };

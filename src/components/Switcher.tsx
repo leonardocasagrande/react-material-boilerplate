@@ -1,5 +1,6 @@
 import loadable from '@loadable/component';
 import routes from 'config/routes';
+import NotFound from 'pages/NotFound';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { IRoute } from 'types';
 
@@ -13,6 +14,7 @@ const Switcher = () => {
             <Route key={route.name} path={route.path} element={<Component />} />
           );
         })}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
